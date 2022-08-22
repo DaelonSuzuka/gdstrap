@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/isometric/tilemaps/resources/SlopeTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/isometric/tilemaps/scripts/SlopeTilemap.gd" type="Script" id=2]
+
+[node name="Slopes" type="TileMap"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 32 )
+show_collision = true
+collision_layer = 512
+collision_mask = 512
+format = 1
+script = ExtResource( 2 )

@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sidescroller/character/CharacterInteractors.gd" type="Script" id=1]
+[ext_resource path="res://sidescroller/character/Character.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 14.0
+height = 0.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 35.0
+
+[node name="Character" type="KinematicBody2D"]
+script = ExtResource( 2 )
+gravity = 75
+walk_speed = 500
+jump_speed = -1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -14 )
+shape = SubResource( 1 )
+
+[node name="Interactors" type="Node2D" parent="."]
+position = Vector2( 0, -33 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Ray1" type="RayCast2D" parent="Interactors"]
+enabled = true
+cast_to = Vector2( 75, 0 )
+collision_mask = 1024
+collide_with_areas = true
+
+[node name="Ray2" type="RayCast2D" parent="Interactors"]
+enabled = true
+cast_to = Vector2( 70, 25 )
+collision_mask = 1024
+collide_with_areas = true
+
+[node name="Ray3" type="RayCast2D" parent="Interactors"]
+enabled = true
+cast_to = Vector2( 70, -25 )
+collision_mask = 1024
+collide_with_areas = true
+
+[node name="Ray4" type="RayCast2D" parent="Interactors"]
+enabled = true
+cast_to = Vector2( 45, 40 )
+collision_mask = 1024
+collide_with_areas = true
+
+[node name="Ray5" type="RayCast2D" parent="Interactors"]
+enabled = true
+cast_to = Vector2( 45, -40 )
+collision_mask = 1024
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="Interactors"]
+visible = false
+collision_layer = 1024
+collision_mask = 1024
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactors/Area2D"]
+shape = SubResource( 2 )
+
+[node name="Body" type="Sprite" parent="."]
+position = Vector2( 0, -32 )
+texture = ExtResource( 4 )

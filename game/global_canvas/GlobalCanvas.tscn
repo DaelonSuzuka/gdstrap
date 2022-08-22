@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/justabit.tres" type="DynamicFont" id=1]
+[ext_resource path="res://global_canvas/FpsCounter.gd" type="Script" id=2]
+[ext_resource path="res://global_canvas/DevModeBanner.gd" type="Script" id=3]
+[ext_resource path="res://global_canvas/GlobalCanvas.gd" type="Script" id=5]
+[ext_resource path="res://global_canvas/DialogBox.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "scroll"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 0 ), Vector2( 0, 0 ), Vector2( -480, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "scroll"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 0 ), Vector2( 0, 0 ), Vector2( -480, 0 ) ]
+}
+
+[node name="GlobalCanvas" type="CanvasLayer"]
+pause_mode = 2
+layer = 99
+script = ExtResource( 5 )
+
+[node name="Debug" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Label" parent="Debug"]
+margin_right = 80.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FpsCounter" type="Label" parent="Debug"]
+margin_top = 18.0
+margin_right = 80.0
+margin_bottom = 32.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+align = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DevModeBanner" type="Control" parent="."]
+visible = false
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="Label" parent="DevModeBanner"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 480.0
+margin_right = 960.053
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "ISOTOPE: ASH - DEMO AVAILABLE AT ISOTOPE.MAGNUSDEI.IO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DevModeBanner/Label1"]
+autoplay = "scroll"
+anims/scroll = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="DevModeBanner"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 480.0
+margin_right = 960.031
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "ISOTOPE: ASH - DEMO AVAILABLE AT ISOTOPE.MAGNUSDEI.IO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DevModeBanner/Label2"]
+anims/scroll = SubResource( 2 )
+
+[node name="PeerList" type="ItemList" parent="."]
+visible = false
+margin_right = 92.0
+margin_bottom = 122.0
+focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogBox" parent="." instance=ExtResource( 6 )]
+visible = false

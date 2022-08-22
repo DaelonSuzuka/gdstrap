@@ -1,0 +1,22 @@
+# Godot-specific ignores
+game/.import/
+
+# local player data files
+game/data/*
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# export folder
+build
+
+# python virtual environment
+.venv
+
+# godot log folder
+logs
+game/logs

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/isometric/tilemaps/resources/LabTileset.tres" type="TileSet" id=1]
+
+[node name="LabTileMap" type="TileMap"]
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 32 )
+format = 1

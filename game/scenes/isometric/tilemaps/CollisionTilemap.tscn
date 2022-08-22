@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/isometric/tilemaps/resources/CollisionTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/isometric/tilemaps/scripts/CollisionTilemap.gd" type="Script" id=2]
+
+[node name="Collision" type="TileMap"]
+modulate = Color( 1, 1, 1, 0.5 )
+z_index = 5
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 32 )
+show_collision = true
+format = 1
+script = ExtResource( 2 )

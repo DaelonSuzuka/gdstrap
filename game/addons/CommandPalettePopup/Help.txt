@@ -1,0 +1,43 @@
+[color=aqua]All open scripts[/color] will be shown by default. Optionally the open help pages can be listed as well.
+
+Starting the search_string with... (pay attention to the spaces):
+[color=aqua]%s [/color] will show the open scenes. 
+[color=aqua]%s [/color] will show all scripts, scenes and other files.
+[color=aqua]%s [/color] will show all scenes.
+[color=aqua]%s [/color] (c as in Code file) will show all scripts.
+[color=aqua]%s [/color] will list all project and editor settings. Activating one will open the setting and select the property. While the filter is active, you can add a new project setting by using the button to the right of the searchbox.
+[color=aqua]%s [/color] will traverse the file tree.
+[color=aqua]%s [/color] followed by a number will jump to that line in the script editor when activating the filter (by pressing Enter) or ending the search_string with a space.
+[color=aqua]%s [/color] will list the methods of the current script with the line number. Activating the method will jump to that line in the script.
+
+While the CommandPalette is open (and no search_string is applied) pressing Control+...
+[color=aqua]%s[/color] will focus the SceneTreeDock.
+[color=aqua]%s[/color] will focus the InspectorDock.
+[color=aqua]%s[/color] will focus the NodeDock.
+[color=aqua]%s[/color] will focus the FileSystemDock.
+[color=aqua]%s[/color] will focus the ImportDock.
+[color=aqua]%s[/color] will focus the ScriptEditor. This is needed because F3 will not focus the ScriptEditor, if the ScriptEditor is already open (another workaround is to switch to another main view and then pressing F3 again). 
+[color=aqua]%s[/color] will move the selection in the SceneTreeDock up.
+[color=aqua]%s[/color] will move the selection in the SceneTreeDock down.
+[color=aqua]%s[/color] will call the context menu for the currently highlighted file (in the script panel, FileSystemDock or SceneTreeDock depending on the active filter). To access the context menu for the SceneTreeDock you need to at least move the node selection with this plugin once. The context menus have their search enabled.
+[color=aqua]%s[/color] will move to the previous scene tab.
+[color=aqua]%s[/color] will move to the next scene tab.
+
+If you press a keyboard shortcut while the popup is visible and that shortcut isn't part of the predefined shortcuts above, the CommandPalette will forward the keyboard shortcut to Godot's editor.
+
+Ending the search_string with  X (space + int), will jump to the X-th item in the list.
+Ending the search_string with [color=aqua]"  "[/color] (double space) while the filter for all files, settings or adding a setting is active, will autocomplete (part) of the path.
+Wildcards (*?) are allowed in the search_string. The ItemList is first populated with matches based on the file/settings name. After that, matches based on the complete file/settings paths will be added.
+
+Opening a script will switch to the scene tab the script is attached to. It only works, if the script is attached to the scene root. This will give you autocompletion on Node(Path)s and their methods.
+
+While the popup is visible, pressing the shortcut again will switch to the last opened file. The two labels at the bottom show the current and the last file opened. 
+
+A copy button to quickly copy the file or settings path to the clipboard is available. There is a "context" button to access the context menu (rmb click) of the selected item for the FileSystemDock and ScriptPanel.
+
+-----
+
+[color=aqua]%s [/color] will list the open text files (TextEditor plugin by [color=aqua]fenix-hub[/color]).
+[color=aqua]%s [/color] will list the todo list (TODO plugin by [color=aqua]need12648430[/color]).
+I have no affiliation with those plugins.
+
