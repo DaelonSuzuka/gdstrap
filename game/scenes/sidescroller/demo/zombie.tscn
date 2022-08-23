@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://sidescroller/demo/zombie.gd" type="Script" id=1]
+[ext_resource path="res://scenes/sidescroller/demo/zombie.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 36.0
