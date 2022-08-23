@@ -35,10 +35,13 @@ func pressed(button):
 		'NewGame':
 			pass
 		'DevRoomIso':
+			Player.pop_menu()
 			Game.load_scene('devroomiso')
 		'DevRoomSide':
+			Player.pop_menu()
 			Game.load_scene('devroomside')
 		'DevRoomTop':
+			Player.pop_menu()
 			Game.load_scene('devroomtop')
 		'Options':
 			pass
