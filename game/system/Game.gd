@@ -172,52 +172,14 @@ func dim():
 # ******************************************************************************
 # Dialog helpers
 
-var popups = {}
-
-func _process(delta):
-	for popup in popups:
-		var object = popups[popup]
-		if is_instance_valid(object):
-			var pos = object.get_global_transform_with_canvas().origin
-			if object.get('tooltip_offset'):
-				pos.y += object.tooltip_offset
-			popup.rect_position = pos
-
-func register_popup(popup, object):
-	GlobalCanvas.add_child(popup)
-	popups[popup] = object
-
 func popup_dialog(object, conversation, options={}):
-	var popup = load('res://global_canvas/DialogPopup.tscn').instance()
-	register_popup(popup, object)
-	options['caller'] = object
-	popup.start(conversation, options)
-
-	if object.has_method('line_finished'):
-		popup.connect("line_finished", object, 'line_finished')
-	
-	Utils.try_connect(popup, 'done', self, 'popup_over')
-	Utils.try_connect(popup, 'done', object, 'popup_over', [popup])
-
-func popup_over(popup=null):
-	if popup:
-		popups.erase(popup)
-		GlobalCanvas.remove_child(popup)
-		popup.queue_free()
-
-# ------------------------------------------------------------------------------
+	var popup = Diagraph.canvas.popup_dialog(object, conversation, options)
 
 func start_dialog(object, conversation, options={}):
-	var dialog = GlobalCanvas.get_node('DialogBox')
-	options['caller'] = object
-	dialog.start(conversation, options)
-	
-	Player.set_input_proxy(object)
+	var dialog = Diagraph.canvas.start_dialog(object, conversation, options)
 
-	Utils.try_connect(dialog, 'line_finished', object, 'line_finished')
-	Utils.try_connect(dialog, 'done', Diagraph.sandbox, 'clear_temp_locals', [], CONNECT_ONESHOT)
+	Player.set_input_proxy(object)
 	Utils.try_connect(dialog, 'done', Player, 'set_input_proxy')
-	Utils.try_connect(dialog, 'done', object, 'conversation_over', [], CONNECT_ONESHOT)
 
 # ******************************************************************************
 

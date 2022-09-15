@@ -14,6 +14,7 @@ var conversation_prefix := prefix + conversation_path
 
 var sandbox = load('res://addons/diagraph/Sandbox.gd').new()
 var watcher = load('res://addons/diagraph/Watcher.gd').new()
+onready var canvas = get_node('DiagraphCanvas')
 
 var characters := {}
 var conversations := {}
@@ -29,10 +30,10 @@ func _ready():
 
 	add_child(sandbox)
 
-	# if OS.has_feature('HTML5'):
-	# 	load_builtin_conversations()
-	# else:
-	# 	init_file_watcher()
+	if OS.has_feature('HTML5'):
+		load_builtin_conversations()
+	else:
+		init_file_watcher()
 
 func init_file_watcher():
 	add_child(watcher)
@@ -268,6 +269,9 @@ func get_all_folders(path: String, max_depth:=10, _depth:=0, _files:=[]) -> Arra
 		file = dir.get_next()
 	dir.list_dir_end()
 	return _files
+
+# ******************************************************************************
+
 
 # ******************************************************************************
 
