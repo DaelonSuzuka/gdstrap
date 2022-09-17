@@ -541,11 +541,19 @@ func next_char(use_timer=true):
 				var block = get_block('<', '>', ['nostrip'])
 				if block:
 					print(block)
-		'[':  # detect chunks of bbcode
-			var block = get_block('[', ']', ['nostrip'])
-			if block:
-				TextBox.bbcode_text += block
-				next_char()
+		'[':
+			if next_char == '[': # inline random dialog
+				var block = get_block('[[', ']]', ['erase'])
+				if block:
+					var parts = block.split('|')
+					var selection = parts[randi() % parts.size() - 1]
+					line = line.insert(cursor, str(selection))
+					next_char()
+			else: # detect chunks of bbcode
+				var block = get_block('[', ']', ['nostrip'])
+				if block:
+					TextBox.bbcode_text += block
+					next_char()
 		'|':  # pipe denotes chunks of text that should pop all at once
 			var end = line.findn('|', cursor + 1)
 			if end != -1:
