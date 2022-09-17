@@ -46,7 +46,7 @@ func popup_dialog(object, conversation, options={}):
 func _popup_over(popup=null):
 	if popup:
 		_popups.erase(popup)
-		GlobalCanvas.remove_child(popup)
+		remove_child(popup)
 		popup.queue_free()
 
 # ******************************************************************************
